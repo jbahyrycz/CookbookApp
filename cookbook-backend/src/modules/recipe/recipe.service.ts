@@ -1,20 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
+import { PrismaService } from '../prisma/prisma.service';
+import { EditRecipeDto } from './dto/edit-recipe.dto';
+import { RecipeFilterDto } from './dto/recipe-filter.dto';
 
 @Injectable()
 export class RecipeService {
-  listRecipe() {
-    return [
-      {
-        title: 'test',
-        estimate: 20,
-        content: 'Aaaaaaaaaaaaaaaaaaaaa bbbbb cccccccc.',
+  constructor(private readonly prisma: PrismaService) {}
+  async listRecipes(filter: RecipeFilterDto) {
+    return this.prisma.recipe.findMany({
+      orderBy: {
+        [filter.sortBy]: filter.sortOrder,
       },
-    ];
+    });
   }
-  addRecipe(data: CreateRecipeDto) {
-    return data;
+  get(id: number) {
+    return this.prisma.recipe.findUnique({
+      where: {
+        id,
+      },
+    });
   }
-  editRecipe() {}
-  deleteRecipe() {}
+  async addRecipe(data: CreateRecipeDto) {
+    return this.prisma.recipe.create({ data });
+  }
+
+  editRecipe(id: number, data: EditRecipeDto) {
+    return this.prisma.recipe.update({
+      where: {
+        id,
+      },
+      data: data,
+    });
+  }
+
+  deleteRecipe(id: number) {
+    return this.prisma.recipe.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }
