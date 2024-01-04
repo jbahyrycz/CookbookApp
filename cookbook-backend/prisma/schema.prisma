@@ -11,9 +11,19 @@ datasource db {
 }
 
 model Recipe {
-  id              Int         @id @default(autoincrement())
-  title           String
-  estimate        Int
-  content         String
-  createdAt       DateTime    @default(now())
+  id        Int      @id @default(autoincrement())
+  title     String
+  estimate  Int
+  content   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  recipes   Recipe[]
 }

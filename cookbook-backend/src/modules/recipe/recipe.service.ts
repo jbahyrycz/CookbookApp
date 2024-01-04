@@ -22,7 +22,14 @@ export class RecipeService {
     });
   }
   async addRecipe(data: CreateRecipeDto) {
-    return this.prisma.recipe.create({ data });
+    return this.prisma.recipe.create({
+      data: {
+        title: data.title,
+        estimate: data.estimate,
+        content: data.content,
+        userId: 0,
+      },
+    });
   }
 
   editRecipe(id: number, data: EditRecipeDto) {
