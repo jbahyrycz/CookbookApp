@@ -1,12 +1,18 @@
 import {RecipesFormValues} from "../../types/RecipesFormValues";
 import {useRecipesForm} from "./hooks/useRecipesForm"
 import {Button, Group, Paper, Stack, Textarea, TextInput} from "@mantine/core";
+import {createRecipe} from "./api/create-recipe";
 
 export const RecipesForm = () => {
     const form = useRecipesForm()
 
-    const handleSubmit = (vals: RecipesFormValues) => {
-        console.log(vals)
+    const handleSubmit = async (vals: RecipesFormValues) => {
+        try {
+            await createRecipe(vals);
+            // Back to the list
+        } catch (e) {
+            // Notification
+        }
     }
 
     return (

@@ -1,10 +1,28 @@
-import {RouteObject, useRoutes} from "react-router-dom";
-import {Layout} from "../components/Layout";
-import {RecipesList} from "./cookbook/RecipesList";
-import {RecipesForm} from "./cookbook/RecipesForm";
-import {ErrorPage} from "./error/ErrorPage";
+import {Navigate, RouteObject, useRoutes} from 'react-router-dom';
+import {Layout} from '../components/Layout';
+import {RecipesList} from './cookbook/RecipesList';
+import {RecipesForm} from './cookbook/RecipesForm';
+import {ErrorPage} from './error/ErrorPage';
+import {LoginPage} from './login/LoginPage';
+import {useIsLogged} from '../hooks/useIsLogged';
 
-const routes: RouteObject[] = [
+const publicRoutes: RouteObject[] = [
+    {
+        path: '/',
+        children: [
+            {
+                path: '/login',
+                element: <LoginPage/>
+            },
+            {
+                path: '*',
+                element: <Navigate to='login' replace/>
+            }
+        ]
+    }
+]
+
+const privateRoutes: RouteObject[] = [
     {
         path: '/',
         element: <Layout/>,
@@ -28,7 +46,8 @@ const routes: RouteObject[] = [
         ]
     }
 ]
-
 export const Routing = () => {
-    return useRoutes(routes)
+    const isLogged = useIsLogged();
+    const routes = isLogged ? privateRoutes : publicRoutes;
+    return useRoutes(routes);
 }

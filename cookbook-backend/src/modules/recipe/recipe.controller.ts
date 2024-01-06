@@ -20,7 +20,7 @@ import { RecipeFilterDto } from './dto/recipe-filter.dto';
 import { TokenGuard } from '../auth/token.guard';
 import { UserID } from '../auth/user.decorator';
 
-@Controller('recipe')
+@Controller('recipes')
 export class RecipeController {
   constructor(private recipeService: RecipeService) {}
   @Get()
