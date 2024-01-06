@@ -4,7 +4,7 @@ import {RecipeRepresentation} from './RecipeRepresentation';
 import {useEffect, useState} from 'react';
 import {listRecipes} from './api/cookbook';
 
-export const RecipesList = () => {
+export const RecipesDisplay = () => {
     const [data, setData] = useState<RecipeType[]>([]);
     useEffect(() => {
         listRecipes().then((response) => setData(response));

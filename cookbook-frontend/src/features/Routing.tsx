@@ -3,20 +3,33 @@ import {Layout} from '../components/Layout';
 import {RecipesList} from './cookbook/RecipesList';
 import {RecipesForm} from './cookbook/RecipesForm';
 import {ErrorPage} from './error/ErrorPage';
-import {LoginPage} from './login/LoginPage';
+import {SignInPage} from './signin/SignInPage';
 import {useIsLogged} from '../hooks/useIsLogged';
+import {RecipesDisplay} from "./cookbook/RecipesDisplay";
+import {MyRecipesList} from "./cookbook/MyRecipesList";
+import {SignUpPage} from "./signup/SignUpPage";
+import {Recipe} from "./recipe/Recipe";
 
 const publicRoutes: RouteObject[] = [
     {
         path: '/',
+        element: <Layout/>,
         children: [
             {
-                path: '/login',
-                element: <LoginPage/>
+                path: '/',
+                element: <RecipesDisplay/>
+            },
+            {
+                path: '/signin',
+                element: <SignInPage/>
+            },
+            {
+                path: '/signup',
+                element: <SignUpPage/>
             },
             {
                 path: '*',
-                element: <Navigate to='login' replace/>
+                element: <Navigate to='signin' replace/>
             }
         ]
     }
@@ -32,12 +45,16 @@ const privateRoutes: RouteObject[] = [
                 element: <RecipesList/>
             },
             {
+                path: '/recipes/my',
+                element: <MyRecipesList/>
+            },
+            {
                 path: '/recipes/new',
                 element: <RecipesForm/>
             },
             {
                 path: '/recipes/:id',
-                element: <RecipesForm/>
+                element: <Recipe/>
             },
             {
                 path: '*',

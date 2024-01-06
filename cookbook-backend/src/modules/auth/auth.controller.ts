@@ -28,6 +28,7 @@ export class AuthController {
     });
   }
   @Post('logout')
+  @HttpCode(HttpStatus.OK)
   logout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie('access-token');
     res.clearCookie('is-logged');

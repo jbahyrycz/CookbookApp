@@ -1,11 +1,11 @@
 import {useForm} from "@mantine/form";
-import {RecipesFormValues} from "../../../types/RecipesFormValues";
+import {RecipeFormValues} from "../../../types/RecipeFormValues";
 
 export const useRecipesForm = () => {
-    const form = useForm<RecipesFormValues>({
+    const form = useForm<RecipeFormValues>({
         initialValues: {
             title: '',
-            estimate: 15,
+            estimate: 10,
             content: ''
         },
 
