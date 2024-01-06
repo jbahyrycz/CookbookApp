@@ -3,4 +3,5 @@ export class RecipeDto {
   title: string;
   estimate: number;
   content: string;
+  userId: string;
 }

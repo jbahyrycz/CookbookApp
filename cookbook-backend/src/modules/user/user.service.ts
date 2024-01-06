@@ -20,4 +20,11 @@ export class UserService {
         throw new ConflictException('User with this username already exists');
     }
   }
+  async findOne(userId: number) {
+    return this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+  }
 }

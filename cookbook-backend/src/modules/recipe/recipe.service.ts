@@ -14,6 +14,18 @@ export class RecipeService {
       },
     });
   }
+  async listMyRecipes(filter: RecipeFilterDto, userId: number) {
+    const { sortBy, sortOrder } = filter;
+
+    return this.prisma.recipe.findMany({
+      where: {
+        userId: userId,
+      },
+      orderBy: {
+        [sortBy]: sortOrder,
+      },
+    });
+  }
   get(id: number) {
     return this.prisma.recipe.findUnique({
       where: {
@@ -21,13 +33,13 @@ export class RecipeService {
       },
     });
   }
-  async addRecipe(data: CreateRecipeDto) {
+  async addRecipe(data: CreateRecipeDto, userId: number) {
     return this.prisma.recipe.create({
       data: {
         title: data.title,
         estimate: data.estimate,
         content: data.content,
-        userId: 0,
+        userId: userId,
       },
     });
   }
