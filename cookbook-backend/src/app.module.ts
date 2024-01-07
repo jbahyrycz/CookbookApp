@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { IngredientModule } from './modules/ingredient/ingredient.module';
 
 @Module({
   controllers: [AppController],
@@ -18,6 +19,7 @@ import { AuthModule } from './modules/auth/auth.module';
     TokenModule,
     UserModule,
     AuthModule,
+    IngredientModule,
   ],
 })
 export class AppModule {}

@@ -5,10 +5,10 @@ import {RecipesForm} from './cookbook/RecipesForm';
 import {ErrorPage} from './error/ErrorPage';
 import {SignInPage} from './signin/SignInPage';
 import {useIsLogged} from '../hooks/useIsLogged';
-import {RecipesDisplay} from "./cookbook/RecipesDisplay";
 import {MyRecipesList} from "./cookbook/MyRecipesList";
 import {SignUpPage} from "./signup/SignUpPage";
 import {Recipe} from "./recipe/Recipe";
+import {EditRecipeForm} from "./cookbook/EditRecipeForm";
 
 const publicRoutes: RouteObject[] = [
     {
@@ -17,7 +17,7 @@ const publicRoutes: RouteObject[] = [
         children: [
             {
                 path: '/',
-                element: <RecipesDisplay/>
+                element: <RecipesList/>
             },
             {
                 path: '/signin',
@@ -53,8 +53,12 @@ const privateRoutes: RouteObject[] = [
                 element: <RecipesForm/>
             },
             {
+                path: '/recipes/:id/edit',
+                element: <EditRecipeForm/>
+            },
+            {
                 path: '/recipes/:id',
-                element: <Recipe/>
+                element: <Recipe/>,
             },
             {
                 path: '*',

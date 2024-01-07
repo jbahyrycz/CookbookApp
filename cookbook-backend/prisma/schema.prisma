@@ -11,13 +11,14 @@ datasource db {
 }
 
 model Recipe {
-  id        Int      @id @default(autoincrement())
-  title     String
-  estimate  Int
-  content   String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  id          Int          @id @default(autoincrement())
+  title       String
+  estimate    Int
+  ingredients Ingredient[]
+  content     String
+  createdAt   DateTime     @default(now())
+  user        User         @relation(fields: [userId], references: [id])
+  userId      Int
 }
 
 model User {
@@ -26,4 +27,11 @@ model User {
   password  String
   createdAt DateTime @default(now())
   recipes   Recipe[]
+}
+
+model Ingredient {
+  id       Int     @id @default(autoincrement())
+  content  String
+  recipe   Recipe  @relation(fields: [recipeId], references: [id])
+  recipeId Int
 }

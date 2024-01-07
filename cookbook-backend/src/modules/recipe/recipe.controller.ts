@@ -27,7 +27,7 @@ export class RecipeController {
   listRecipes(@Query() filter: RecipeFilterDto) {
     return this.recipeService.listRecipes(filter);
   }
-  @Get('/my')
+  @Get('my')
   @UseGuards(TokenGuard)
   listMyRecipes(@Query() filter: RecipeFilterDto, @UserID() userId: number) {
     return this.recipeService.listMyRecipes(filter, userId);

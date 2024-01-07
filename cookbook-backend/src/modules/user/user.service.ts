@@ -6,6 +6,9 @@ import * as argon2 from 'argon2';
 @Injectable()
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
+  async listUsers() {
+    return this.prisma.user.findMany();
+  }
   async create(createUserDto: CreateUserDto) {
     const passHash = await argon2.hash(createUserDto.password);
     try {
