@@ -34,7 +34,7 @@ export const SignUpPage: FC = () => {
                     <p>Sign up</p>
                     <TextInput required type='username' label='Username' {...form.getInputProps('username')}/>
                     <TextInput required type='password' label='Password' {...form.getInputProps('password')}/>
-                    <Button type='submit'>Sign up</Button>
+                    <Button type='submit' variant="filled" color="orange">Sign up</Button>
                 </Stack>
             </form>
         </div>

@@ -3,7 +3,7 @@ import {Button, Group, NumberInput, Paper, Stack, Textarea, TextInput} from "@ma
 import {createIngredient, createRecipe} from "./api/create-recipe";
 import {useNavigate} from "react-router-dom";
 import {addRecipeErrorNotification} from "./notifications";
-import {useState} from "react";
+import React, {useState} from "react";
 import {IngredientType} from "../../types/IngredientType";
 
 export const RecipesForm = () => {
@@ -86,7 +86,7 @@ export const RecipesForm = () => {
                         {...recipeForm.getInputProps('content')}>
                     </Textarea>
                     <Group>
-                        <Button type={'submit'}>Submit</Button>
+                        <Button type='submit' variant="filled" color="orange">Submit</Button>
                     </Group>
                 </Stack>
             </form>

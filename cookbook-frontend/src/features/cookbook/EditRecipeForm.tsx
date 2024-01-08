@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useRecipesForm} from "./hooks/useRecipesForm";
 import {useNavigate, useParams} from "react-router-dom";
 import {getRecipe} from "../recipe/api/get-recipe";
@@ -140,7 +140,7 @@ export const EditRecipeForm = () => {
                         defaultValue={recipeData.content}
                     </Textarea>
                     <Group>
-                        <Button type={'submit'}>Submit</Button>
+                        <Button type='submit' variant="filled" color="orange">Submit</Button>
                     </Group>
                 </Stack>
             </form>
