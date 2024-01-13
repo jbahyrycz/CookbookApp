@@ -38,6 +38,7 @@ export class RecipeService {
       data: {
         title: data.title,
         estimate: data.estimate,
+        url: data.url,
         content: data.content,
         userId: userId,
       },

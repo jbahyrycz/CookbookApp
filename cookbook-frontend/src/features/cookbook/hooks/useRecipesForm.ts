@@ -7,6 +7,7 @@ export const useRecipesForm = () => {
         initialValues: {
             title: '',
             estimate: 10,
+            url: 'https://placehold.co/400x200',
             content: ''
         },
 

@@ -15,6 +15,7 @@ model Recipe {
   title       String
   estimate    Int
   ingredients Ingredient[]
+  url         String
   content     String
   createdAt   DateTime     @default(now())
   user        User         @relation(fields: [userId], references: [id])
@@ -30,8 +31,8 @@ model User {
 }
 
 model Ingredient {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   content  String
-  recipe   Recipe  @relation(fields: [recipeId], references: [id])
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
   recipeId Int
 }

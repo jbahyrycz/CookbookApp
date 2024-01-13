@@ -19,6 +19,7 @@ export const EditRecipeForm = () => {
         id: recipeId,
         title: '',
         estimate: 0,
+        url: 'https://placehold.co/400x200',
         content: ''
     });
     const [ingredients, setIngredients] = useState<IngredientType[]>([{
@@ -38,6 +39,7 @@ export const EditRecipeForm = () => {
                     recipeForm.setValues({
                         title: fetchedRecipe.title,
                         estimate: fetchedRecipe.estimate,
+                        url: fetchedRecipe.url,
                         content: fetchedRecipe.content,
                     });
                     setIngredients(fetchedIngredients);
@@ -88,7 +90,8 @@ export const EditRecipeForm = () => {
             const recipeVals = {
                 title: recipeForm.values.title,
                 estimate: recipeForm.values.estimate,
-                content: recipeForm.values.content,
+                url: recipeForm.values.url,
+                content: recipeForm.values.content
             };
 
             const recipe = await editRecipe(recipeVals, recipeId);
@@ -132,6 +135,12 @@ export const EditRecipeForm = () => {
                             onKeyDown={(e) => handleIngredientKeyDown(e, index)}
                         />
                     ))}
+                    <TextInput
+                        withAsterisk
+                        label='Photo url'
+                        placeholder='https://placehold.co/400x200'
+                        {...recipeForm.getInputProps('url')}>
+                    </TextInput>
                     <Textarea
                         withAsterisk
                         label='Content'

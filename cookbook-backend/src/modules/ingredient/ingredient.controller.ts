@@ -25,7 +25,6 @@ export class IngredientController {
   listIngredients() {
     return this.ingredientService.listIngredients();
   }
-
   @Get('recipe/:recipeId')
   @UseGuards(TokenGuard)
   listIngredientByRecipe(@Param('recipeId', ParseIntPipe) recipeId: number) {

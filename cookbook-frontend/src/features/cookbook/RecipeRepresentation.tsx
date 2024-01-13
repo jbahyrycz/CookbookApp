@@ -22,7 +22,7 @@ export const RecipeRepresentation: FC<RecipeProps> = memo(({recipe}) => {
         >
             <Card.Section>
                 <Image
-                    src='/images/testphoto.png'
+                    src={recipe.url}
                     h={200}
                     alt='No way!'
                 />

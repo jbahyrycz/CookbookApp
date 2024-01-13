@@ -8,5 +8,8 @@ export class CreateRecipeDto {
   estimate: number;
   @IsString()
   @IsNotEmpty()
+  url: string;
+  @IsString()
+  @IsNotEmpty()
   content: string;
 }

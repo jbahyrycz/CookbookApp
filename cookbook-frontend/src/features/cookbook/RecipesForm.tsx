@@ -18,7 +18,7 @@ export const RecipesForm = () => {
     };
     const handleIngredientKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Zapobiega domyślnemu zachowaniu klawisza Enter w formularzu
+            e.preventDefault();
             const newIngredients = [...ingredients];
             newIngredients.push({ id: 0, content: '', recipeId: 0 });
             setIngredients(newIngredients);
@@ -29,6 +29,7 @@ export const RecipesForm = () => {
             const recipeVals = {
                 title: recipeForm.values.title,
                 estimate: recipeForm.values.estimate,
+                url: recipeForm.values.url,
                 content: recipeForm.values.content,
             };
 
@@ -79,6 +80,12 @@ export const RecipesForm = () => {
                             onKeyDown={(e) => handleIngredientKeyDown(e, index)}
                         />
                     ))}
+                    <TextInput
+                        withAsterisk
+                        label='Photo url'
+                        placeholder='https://placehold.co/400x200'
+                        {...recipeForm.getInputProps('url')}>
+                    </TextInput>
                     <Textarea
                         withAsterisk
                         label='Content'
