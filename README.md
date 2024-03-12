@@ -1,11 +1,11 @@
 # CookbookApp
 Cookbook app for *Internet Engineering* classes. Example recipes copied from https://www.allrecipes.com/.
 ## Technologies used
-* TypeScript
-* JavaScript
-* React
-* NestJS
-* Prisma
+- TypeScript
+- JavaScript
+- React
+- NestJS
+- Prisma
 
 ![CookbookRecipesList](https://github.com/jbahyrycz/CookbookApp/assets/86531146/af8bbedb-1268-40c1-8635-1d85d81467b8)
 ![CookbookRecipe](https://github.com/jbahyrycz/CookbookApp/assets/86531146/4e2eb9c0-a589-44c3-bfd0-e33678187c9f)
